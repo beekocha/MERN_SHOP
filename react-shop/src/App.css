@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Montserrat+Subrayada&display=swap');
+
+
+/* Carousel */
+.carousel-caption {
+  color: rgb(5, 5, 5);
+  text-align: center;
+  position: static;
+  background-image: url(https://images6.alphacoders.com/405/thumb-1920-405481.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+/* Container */
+.constyle {
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.constyle .card {
+  border: none;
+  border-radius: 0%;
+}
+
+#scroll {
+  max-width: 70px;
+  max-height: 70px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+#scroll:hover {
+  max-width: 80px;
+  max-height: 80px;
+  min-height: 50px;
+  min-width: 50px;
+}
+
+.grid-image {
+  width:100%;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
