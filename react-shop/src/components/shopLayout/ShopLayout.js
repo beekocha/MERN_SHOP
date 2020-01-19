@@ -12,7 +12,8 @@ const ShopLayout = ({section}) => {
     }
 
     return (
-        <Fragment style={{margin:'20px', padding:'20px'}}>
+      <Fragment>
+        <div style={{margin:'20px'}}>
             <div >
                 <Form style={{margin:'10px', display:'flex', placeContent:'center'}}>
                     <FormControl  
@@ -28,14 +29,14 @@ const ShopLayout = ({section}) => {
                 {product.filter((value) => value.section === section)
                         .filter(({name}) => name.toLowerCase()
                         .includes(search.toLowerCase()))
-                        .map(({id, pic, desc, cost, name}) => (
-                           <Cards key={id} desc={desc} cost={cost} pic={pic} name={name}/>
+                        .map(({pic, desc, cost, name, id}) => (
+                           <Cards id={id} desc={desc} cost={cost} pic={pic} name={name}/>
                         ))
                 }
                 </div>
             </div>
-        </Fragment>
-
+        </div>
+      </Fragment>
     );
 };
 

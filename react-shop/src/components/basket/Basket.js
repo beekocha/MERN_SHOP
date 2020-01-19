@@ -1,27 +1,37 @@
-import React, {Fragment, useState} from 'react';
-import {Link} from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Nav from "react-bootstrap/Nav";
-import basket from '../../img/basket.png';
-import Container from 'react-bootstrap/Container';
-import Cards from '../shopLayout/Cards';
-import {product} from '../pages/product';
+import React, {Fragment} from 'react';
+import BasketCard from './BasketCard';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteAll, buyAll } from '../../redux/actions/basket';
+import Button from 'react-bootstrap/Button';
 
-const Basket = () => {
-    const [basketlist, setBasketlist] = useState([]);
-    const addProduct = (value) => {
-        setBasketlist(basketlist.push(value))
-    }
+const Basket = ({basket, buyAll, deleteAll}) => {
+    
+
     return (
         <Fragment>
+            
+                
             <div style={{display:'flex', flexWrap: 'wrap', alignContent:'center', justifyContent:'space-around'}}>
-                {product.map(({id, pic, desc, cost, name}, i) => (
-                    <Cards addProduct={addProduct} key={id} desc={desc} cost={cost} pic={pic} name={name}/>
-                    ))
-                }
+               { 
+                basket.length ? basket.map((item) => 
+                    <BasketCard id={item.id} name={item.name} cost={item.cost} pic={item.pic}/>)
+                
+                : <h1>You haven't bought anything yet</h1> 
+               }
             </div>
         </Fragment>
     );
 }
 
-export default Basket;
+Basket.propTypes = {
+    basket: PropTypes.array.isRequired,
+    deleteAll: PropTypes.func.isRequired,
+    buyAll: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+    basket: state.basket,
+})
+
+export default connect(mapStateToProps, {deleteAll, buyAll})(Basket);
