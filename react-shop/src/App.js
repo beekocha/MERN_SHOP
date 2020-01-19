@@ -4,10 +4,13 @@ import Routes from './components/routing/Routes';
 import Navigation from './components/layout/Navigation';
 import Landing from './components/layout/Landing';
 import './App.css';
-import {product} from './components/pages/product';
-function App() {
+//Redux
+import { Provider } from 'react-redux';
+import store from '../src/redux/store/store'
 
+function App() {
   return (
+    <Provider store={store}>
       <Router>
         <Fragment>
           <Navigation/>
@@ -17,6 +20,7 @@ function App() {
           </Switch>
         </Fragment>
       </Router>
+    </Provider>
   );
 }
 
