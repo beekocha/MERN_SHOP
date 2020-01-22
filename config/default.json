@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://beekocha:beekocha@cluster0-npknq.mongodb.net/test?retryWrites=true&w=majority",
+    "jwt":"secret"
+}

@@ -6,10 +6,10 @@ import { ADD_ITEM,
         } from './types';
 
 export const addItem = (item) => {
-    const id = uuid.v4();
+    item.id = uuid.v4();
     return({
         type: ADD_ITEM,
-        payload: item, id
+        payload: item
     })
 };
 
