@@ -1,5 +1,5 @@
-import React, {useState, Fragment} from "react";
-import {Link} from 'react-router-dom';
+import React, { useState, Fragment } from "react";
+// import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -32,7 +32,7 @@ const Auth = ({setShowReg, setShowLog, showLog}) => {
   //Rendering Login-modal
   return (
     <Fragment>
-      <Nav.Link as={Link} onClick={() => setShowLog(true)}>
+      <Nav.Link  onClick={() => setShowLog(true)}>
         LOGIN
       </Nav.Link>
       <Modal
@@ -83,7 +83,7 @@ const Auth = ({setShowReg, setShowLog, showLog}) => {
               >
                 Submit
               </Button>
-              <a onClick = {() => showAndHide()}>Don't have an account yet? Register!</a>
+              <a onClick = {() => showAndHide()} href='#'>Don't have an account yet? Register!</a>
           </Form>
         </Modal.Body>
       </Modal>

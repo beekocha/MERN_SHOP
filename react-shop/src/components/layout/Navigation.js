@@ -4,8 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Auth from '../auth/Auth';
 import Register from '../auth/Register';
-import Basket from '../basket/Basket';
-import basket from '../../img/basket.png'
+import basket from '../../img/basket.png';
 
 const Navigation = ({isAuthenticated}) => {
   //States for  rendering Modals
@@ -23,7 +22,7 @@ const Navigation = ({isAuthenticated}) => {
                     <Nav.Link as={Link} to='/boards'>BOARDS</Nav.Link>
                 </Nav>    
                 <Nav>
-                    <Nav.Link as={Link} to='/basket'><img src={basket}/></Nav.Link>
+                    <Nav.Link as={Link} to='/basket'><img src={basket} alt='shop-basket-list'/></Nav.Link>
                 </Nav>       
                 <Nav>
                     <Auth showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg}/>

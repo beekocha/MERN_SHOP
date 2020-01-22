@@ -16,7 +16,7 @@ const Section = () => {
         <Container style={{padding: '0', textAlign:'center'}} fluid='true'>
           <Row noGutters='true'>
           <Col lg={4} sm={4}><Link to='/boards'/><CardForSection text={'For each season we present a complete line of snowboards, and all of them are designed to make every turn, jump and touchdown as easy as possible!'} title={'Boards '} pic={p3} alt='Snowboards'/></Col>
-          <Col lg={4} sm={4}><CardForSection text={'Snowboard boots are typically categorized as soft, medium or stiff. We have prepared only the best products for you! Go to our collection.'} title={'Boots'} url='#' pic={p2} alt='Boots for snowboarding'/></Col>
+          <Col lg={4} sm={4}><CardForSection text={'Snowboard boots are typically categorized as soft, medium or stiff. We have prepared only the best products for you! Go to our collection.'} title={'Boots'} url='/boots' pic={p2} alt='Boots for snowboarding'/></Col>
           <Col lg={4} sm={4}><CardForSection text={'A snowboard jacket is a necessary element of equipment for lovers of skiing and snowboarding. Go to our collection.'} title={'Jackets'} url='#' pic={p1} alt='Jackets for snowboarding'/></Col>
           </Row>
           <hr style={{backgroundColor:'black'}}/>

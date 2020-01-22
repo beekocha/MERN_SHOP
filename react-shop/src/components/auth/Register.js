@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import {Link, Redirect} from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -32,7 +32,7 @@ const Register = ({setShowReg, showReg, setShowLog}) => {
 
   return (
     <Fragment>
-      <Nav.Link as={Link} onClick = {() => setShowReg(true)}>
+      <Nav.Link onClick = {() => setShowReg(true)}>
         REGISTER
       </Nav.Link>
       <Modal

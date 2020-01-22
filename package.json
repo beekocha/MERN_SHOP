@@ -1,0 +1,29 @@
+{
+  "name": "mern_shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "react-shop": "npm start --prefix react-shop",
+    "dev": "concurrently \"npm run server\" \"npm run react-shop\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beekocha/MERN_SHOP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beekocha/MERN_SHOP/issues"
+  },
+  "homepage": "https://github.com/beekocha/MERN_SHOP#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.7",
+    "nodemon": "^2.0.2"
+  }
+}

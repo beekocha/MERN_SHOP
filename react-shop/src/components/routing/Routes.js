@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Boards from '../pages/Boards';
 import Jackets from '../pages/Jackets';
 import Boots from '../pages/Boots';
+import Basket from '../basket/Basket';
 
 const Routes = () => {
     return (
@@ -12,6 +13,7 @@ const Routes = () => {
                 <Route exact path='/boards' component={Boards}/>
                 <Route exact path='/jackets' component={Jackets}/>
                 <Route exact path='/boots' component={Boots}/>
+                <Route exact path='/basket' component={Basket}/>
             </Switch>
         </section>
     )

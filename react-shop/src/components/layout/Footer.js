@@ -4,10 +4,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import s1 from '../../img/s1.jpg'
-import s3 from '../../img/s3.jpg'
-import s5 from '../../img/s5.jpg'
+import s1 from '../../img/s1.jpg';
+import s3 from '../../img/s3.jpg';
+import s5 from '../../img/s5.jpg';
 import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <Container style={{width:'100%', textAlign:'left'}} fluid='true'>

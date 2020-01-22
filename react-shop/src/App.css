@@ -52,6 +52,10 @@
 .grid-image {
   width:100%;
 }
+#jumbo {
+  background-image: url(https://www.switchbacktravel.com/sites/default/files/images/articles/All-mountain%20snowboards%20%28header%29.jpg);
+  width: 100%;
+}
 
 
 @media (prefers-reduced-motion: no-preference) {

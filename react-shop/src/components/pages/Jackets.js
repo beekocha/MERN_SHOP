@@ -1,9 +1,5 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment} from 'react';
 import ShopLayout from '../shopLayout/ShopLayout';
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-
-
 
 const Jackets = () => {
   return(
