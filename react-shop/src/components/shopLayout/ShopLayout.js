@@ -1,11 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Cards from './Cards';
 import {product} from '../pages/product';
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { getItems } from '../../redux/actions/items'
 
-const ShopLayout = ({section}) => {
-
+const ShopLayout = ({section, items, getItems}) => {
+    useEffect(() => {
+        getItems();
+      }, [getItems]);
     const [search, setSearch] = useState('');
     const searchChange = (event) => {
         setSearch(event.target.value);
@@ -26,12 +31,12 @@ const ShopLayout = ({section}) => {
                 </Form>
          
                 <div style={{display:'flex', flexWrap: 'wrap', alignContent:'center', justifyContent:'space-around'}}>
-                {product.filter((value) => value.section === section)
+                { items.filter((value) => value.section === section)
                         .filter(({name}) => name.toLowerCase()
                         .includes(search.toLowerCase()))
                         .map(({pic, desc, cost, name, id}) => (
                            <Cards id={id} desc={desc} cost={cost} pic={pic} name={name}/>
-                        ))
+                        )) 
                 }
                 </div>
             </div>
@@ -40,4 +45,18 @@ const ShopLayout = ({section}) => {
     );
 };
 
-export default ShopLayout;
+ShopLayout.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired,
+}
+
+const mapStateToProps = state => {return{
+    items: state.items
+}}
+const mapDispatchToProps = (dispatch) => {
+    return{
+    getItems: () => dispatch(getItems()),
+  }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopLayout);

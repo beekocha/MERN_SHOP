@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Routes from './components/routing/Routes';
 import Navigation from './components/layout/Navigation';
@@ -8,7 +8,9 @@ import './App.css';
 import { Provider } from 'react-redux';
 import store from '../src/redux/store/store'
 
+
 function App() {
+
   return (
     <Provider store={store}>
       <Router>
@@ -24,4 +26,6 @@ function App() {
   );
 }
 
-export default App;
+
+
+export default (App);
