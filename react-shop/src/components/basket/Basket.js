@@ -53,7 +53,6 @@ const Basket = ({basket, buyAll, deleteAll}) => {
                     
                     : <div>
                         <h1>{ifempty}</h1>
-                        <img src=''></img>
                     </div>                   
                 }
                 </Row>

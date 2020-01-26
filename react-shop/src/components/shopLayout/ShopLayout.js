@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Cards from './Cards';
-import {product} from '../pages/product';
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import PropTypes from 'prop-types'
@@ -54,9 +53,9 @@ const mapStateToProps = state => {return{
     items: state.items
 }}
 const mapDispatchToProps = (dispatch) => {
-    return{
-    getItems: () => dispatch(getItems()),
-  }
-  }
+    return {
+        getItems: () => dispatch(getItems()),
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopLayout);
