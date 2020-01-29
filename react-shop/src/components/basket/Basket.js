@@ -28,11 +28,11 @@ const Basket = ({basket, buyAll, deleteAll}) => {
     return (
         <Fragment>
             <h1 style={{display:'block', textAlign:'center'}}>BASKET</h1>
-            <Container style={{display:'flex', placeContent: 'center'}}>
-                <Row >
+            <Container>
+                <Row  style={{display:'flex', placeContent: 'center'}}>
                     <h2>Total is: {countTotal()} </h2>
                 </Row> 
-                <Row>   
+                <Row  style={{display:'flex', placeContent: 'center'}}>   
                     <Button variant='danger' onClick={remove}>Delete</Button>
                     <Button variant='success' onClick={order}>Buy</Button>
                 </Row>
