@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <Container style={{width:'100%', textAlign:'left'}} fluid='true'>
+        <Container style={{width:'100%', textAlign:'left'}} fluid='true' id='footer'>
             <Row style={{marginTop:'2em', marginBottom: '2em'}}>
                 <Col sm={6} lg={6}>
                 <Image className='grid-image' src={s1}/>

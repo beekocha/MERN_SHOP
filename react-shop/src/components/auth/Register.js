@@ -4,9 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Nav from "react-bootstrap/Nav";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {register} from '../../redux/actions/auth';
+import {setAlert} from '../../redux/actions/alerts';
+import Alert from "react-bootstrap/Alert";
+ 
 
-
-const Register = ({setShowReg, showReg, setShowLog}) => {
+const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, setAlert}) => {
   // Register data
   const [formData, setFormData] = useState({
     name: '',
@@ -21,13 +26,17 @@ const Register = ({setShowReg, showReg, setShowLog}) => {
 
   const onSubmit = async e => {
     e.preventDefault();
+    register({ name, email, password });
+    if(isAuthenticated) {
+      setShowReg(false)
+    }
     }
 
     const showAndHide = () => {
-      return (
-       setShowReg(false),
+   
+       setShowReg(false);
        setShowLog(true)
-      )
+      
     }
 
   return (
@@ -88,13 +97,13 @@ const Register = ({setShowReg, showReg, setShowLog}) => {
             </Form.Group>
                 <Button 
                   style={{marginTop:'2rem'}} 
-                  variant="primary"
+                  variant="success"
                   type="submit"
                   block
                 >
                   Submit
                 </Button>
-                <a onClick={() => showAndHide()}>You have an account? Login</a>
+                <Button onClick={() => showAndHide()} block variant='primary'>You have an account? Login</Button>
           </Form>
         </Modal.Body>
       </Modal>
@@ -102,4 +111,17 @@ const Register = ({setShowReg, showReg, setShowLog}) => {
   );
 }
 
-export default Register;
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  setAlert: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { register, setAlert }
+)(Register);

@@ -10,36 +10,33 @@ import Container from 'react-bootstrap/Container';
 const Basket = ({basket, buyAll, deleteAll}) => {
     const [ifempty, setIfempty] = useState(`You haven't bought anything yet`)
     const countTotal = () => {
-       return basket.reduce((accum, itemValue) => {return accum+itemValue.cost},0)
+       basket.reduce((accum, itemValue) => {return accum+itemValue.cost},0)
     }
     const remove = () => {
-        return(
-            deleteAll(),
+            deleteAll();
             setIfempty(`You haven't bought anything yet`)
-            )
     }
     const order = () => {
         if(basket.length>0){
-            return(
-                buyAll(),
+                buyAll();
                 setIfempty('The purchase was successful! Thanks for your order!')
-            )
         }
         else {
-            return (setIfempty('Please, add product to your basket for ordering!'))
+            setIfempty('Please, add product to your basket for ordering!')
         }
     }
     return (
         <Fragment>
             <h1 style={{display:'block', textAlign:'center'}}>BASKET</h1>
-            <Container>
-                <Row style={{display:'flex', placeContent: 'center'}}>
+            <Container style={{display:'flex', placeContent: 'center'}}>
+                <Row >
                     <h2>Total is: {countTotal()} </h2>
-                    <div>
+                </Row> 
+                <Row>   
                     <Button variant='danger' onClick={remove}>Delete</Button>
                     <Button variant='success' onClick={order}>Buy</Button>
-                    </div>
                 </Row>
+                
                 <Row style={{display:'flex',
                          alignContent:'center',
                          flexWrap:'wrap',

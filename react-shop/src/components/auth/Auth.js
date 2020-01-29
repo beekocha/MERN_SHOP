@@ -1,11 +1,14 @@
 import React, { useState, Fragment } from "react";
-// import { Link } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Nav from "react-bootstrap/Nav";
-
-const Auth = ({setShowReg, setShowLog, showLog}) => {
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {login} from '../../redux/actions/auth';
+ 
+const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
   // Changing data in login-form
   const [formData, setFormData] = useState({
     email: '',
@@ -19,15 +22,19 @@ const Auth = ({setShowReg, setShowLog, showLog}) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    // email, password;
+    login(email, password);
+    if(isAuthenticated){
+      setShowLog(false)
+    }
   }
 
   const showAndHide = () => {
-    return (
-     setShowLog(false),
+
+     setShowLog(false);
      setShowReg(true)
-    )
+  
   }
+ 
 
   //Rendering Login-modal
   return (
@@ -78,12 +85,12 @@ const Auth = ({setShowReg, setShowLog, showLog}) => {
 
               {/* Submit and Redirect */}
               <Button style={{marginTop:'2rem'}}
-                    variant="primary"
+                    variant="success"
                     block type="submit"
               >
                 Submit
               </Button>
-              <a onClick = {() => showAndHide()} href='#'>Don't have an account yet? Register!</a>
+              <Button onClick = {() => showAndHide()} block variant="primary">Register</Button>
           </Form>
         </Modal.Body>
       </Modal>
@@ -91,4 +98,13 @@ const Auth = ({setShowReg, setShowLog, showLog}) => {
   );
 }
 
-export default Auth;
+Auth.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+
+export default connect(mapStateToProps, {login})(Auth);
