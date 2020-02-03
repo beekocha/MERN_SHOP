@@ -19,7 +19,25 @@ const ItemSchema = new mongoose.Schema({
     pic: {
         type: String,
         required: true
-    }
+    },
+    comments: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+          },
+          text: {
+            type: String,
+            required: true
+          },
+          name: {
+            type: String
+          },
+          date: {
+            type: Date,
+            default: Date.now
+          }
+        }
+      ]
 })
 
 module.exports = Item = mongoose.model('item', ItemSchema);
