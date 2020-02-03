@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const auth = require('../../middleware/auth');
 const Item = require('../../models/Item')
 const User = require('../../models/User')
 // @route    POST api/item
@@ -31,18 +31,21 @@ router.get('/', (req, res) => {
 router.post(
   '/comment/:id',
     auth,
-    async (req, res) => {
-
+    async (req, res) => {  
+      const {text} = req.body;
+      if(!text) {
+        return res.status(400).json({msg: 'Fill in all fields'});
+      }
     try {
-      const user = await User.findById(req.user.id).select('-password');
-      const item = await Item.findById(req.params.id);
+      let user = await User.findById(req.user.id).select('-password');
+      console.log(req.user.id)
+      let item = await Item.findById(req.params.id);
 
       const newComment = {
-        text: req.body.text,
+        text: req.body,
         name: user.name,
         user: req.user.id
       };
-
       item.comments.unshift(newComment);
 
       await item.save();
@@ -80,9 +83,9 @@ router.delete('/comment/:id', auth, async (req, res) => {
       .map(comment => comment.id)
       .indexOf(req.params.comment_id);
 
-    post.comments.splice(removeIndex, 1);
+    item.comments.splice(removeIndex, 1);
 
-    await post.save();
+    await item.save();
 
     res.json(item.comments);
   } catch (err) {
