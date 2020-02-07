@@ -14,8 +14,8 @@ const Comments = ({date, user, id, text, name, itemId, removeComment, auth}) => 
                         <Button
                         onClick={() =>  removeComment(itemId, id)}
                         variant='danger'
-                        style={{position:'absolute', right:'5px', padding:'3px'}}
-                        >x
+                        style={{position:'absolute', right:'0px'}}
+                        >
                         </Button>):null}
                 <Card.Header style={{textAlign:'center'}}>{name}</Card.Header>
                 <Card.Body>
