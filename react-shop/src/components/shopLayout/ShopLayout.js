@@ -2,19 +2,21 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Cards from './Cards';
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
-import { getItems } from '../../redux/actions/items'
+import axios from 'axios'
 
-const ShopLayout = ({section, items, getItems}) => {
+const ShopLayout = ({section}) => {
+   const [items, setItems] = useState([])
+    const getItems = () => {
+            axios.get('/api/items').then( res => setItems(res.data)).catch(error => error)
+    }
     useEffect(() => {
-        getItems();
-      }, [getItems]);
+        getItems()
+      }, []);
+
     const [search, setSearch] = useState('');
     const searchChange = (event) => {
         setSearch(event.target.value);
     }
-
     return (
       <Fragment>
         <div style={{margin:'20px'}}>
@@ -33,8 +35,9 @@ const ShopLayout = ({section, items, getItems}) => {
                 { items.filter((value) => value.section === section)
                         .filter(({name}) => name.toLowerCase()
                         .includes(search.toLowerCase()))
-                        .map(({pic, desc, cost, name, id}) => (
-                           <Cards id={id} desc={desc} cost={cost} pic={pic} name={name}/>
+                        .map(({pic, desc, cost, name, _id, comments}) => (
+                           <Cards key={_id} id={_id} desc={desc} cost={cost} pic={pic} name={name} comments={comments} 
+                           updateFunc={getItems}/>
                         )) 
                 }
                 </div>
@@ -44,18 +47,4 @@ const ShopLayout = ({section, items, getItems}) => {
     );
 };
 
-ShopLayout.propTypes = {
-    getItems: PropTypes.func.isRequired,
-    items: PropTypes.array.isRequired,
-}
-
-const mapStateToProps = state => {return{
-    items: state.items
-}}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getItems: () => dispatch(getItems()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShopLayout);
+export default ShopLayout;

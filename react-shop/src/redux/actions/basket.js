@@ -4,8 +4,8 @@ import { ADD_ITEM,
          DELETE_ALL,
          BUY_ALL
         } from './types';
-
-export const addItem = (item) => {
+        
+export const addItem = (item)  => {
     item.id = uuid.v4();
     return({
         type: ADD_ITEM,

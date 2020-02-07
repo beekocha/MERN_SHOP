@@ -5,7 +5,7 @@ function auth(req, res, next) {
   if (!token) return res.status(401).json({msg: 'Acces denied, try again'})
   try{
   const decoded = jwt.verify(token, require('../config/default.json').jwtSecret);
-  req.user = decoded;
+  req.user = decoded.user;
   next();
 } catch(e) {
   res.status(400).json({msg: `Token is not valid or expired`})

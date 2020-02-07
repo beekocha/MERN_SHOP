@@ -1,20 +1,29 @@
 import React, {useState, Fragment} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Auth from '../auth/Auth';
 import Register from '../auth/Register';
-import basket from '../../img/basket.png';
+import b from '../../img/basket.png';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import {connect} from 'react-redux';
 import {logout} from '../../redux/actions/auth';
 import PropTypes from 'prop-types';
-const Navigation = ({ auth: { isAuthenticated}, logout}) => {
+import Popover from 'react-bootstrap/Popover';
+import PopOverlay from './PopOverlay';
+const Navigation = ({ auth: { isAuthenticated}, logout, basket}) => {
   //States for  rendering Modals
   const [showLog, setShowLog] = useState(false);
   const [showReg, setShowReg] = useState(false);
-  //LOGOUT and Redirect
 
-  return (
+  const popover = (
+    <Popover id="popover-basic" outOfBoundaries>
+      <Popover.Title as="h3">Your purchase</Popover.Title>
+       <PopOverlay />
+    </Popover>
+  );
+
+  return ( 
     <Fragment>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand as={Link} to='/'>BShop</Navbar.Brand>
@@ -27,7 +36,19 @@ const Navigation = ({ auth: { isAuthenticated}, logout}) => {
                 </Nav>    
                 {isAuthenticated? 
                 <Nav>
-                    <Nav.Link as={Link} to='/basket'><img src={basket} alt='shop-basket-list'/></Nav.Link>
+                    <Nav.Link as={Link} to='/basket'>
+                      
+                    <OverlayTrigger
+                      placement="bottom"
+                      flip
+                      delay={{ show: 250, hide: 3000 }}
+                      trigger="hover"
+                      overlay={popover}
+                    >
+                    <img src={b} alt='shop-basket-list'/>
+                    </OverlayTrigger>
+                    {basket.length}
+                    </Nav.Link>
                     <Nav.Link 
                         style={{color: 'red'}}
                         onClick={()=>logout()}
@@ -46,11 +67,13 @@ const Navigation = ({ auth: { isAuthenticated}, logout}) => {
 
 Navigation.propTypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    basket: PropTypes.array.isRequired,
   };
   
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    basket: state.basket
   });
 
 export default connect(mapStateToProps, {logout})(Navigation);

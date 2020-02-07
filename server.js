@@ -9,10 +9,10 @@ connectDB();
 //Middleware connecting
 app.use(express.json({ extended: false }));
 //routes
-app.get('/', (req, res) => res.send('API Running'));
-app.use('/api/items', require('./routes/api/items'));
+
 app.use('/api/user', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/items', require('./routes/api/items'));
 
 const PORT = process.env.PORT || 5000;
 

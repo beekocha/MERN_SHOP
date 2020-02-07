@@ -14,13 +14,16 @@ const Cards = (props) => {
                         {props.desc}
                     </Card.Text>
                     <Info 
+                          key={props.id}
                           show={show}
                           setShow={setShow}
                           id={props.id}
                           name={props.name}
                           cost={props.cost}
                           pic={props.pic}
-                          desc={props.desc}/>
+                          desc={props.desc}
+                          comments={props.comments}
+                          updateFunc={props.updateFunc}/>
                 </Card.Body>
         </Card>
     </Fragment>

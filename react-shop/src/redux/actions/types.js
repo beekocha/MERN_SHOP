@@ -7,9 +7,6 @@ export const LOGIN_SUCCESS='LOGIN_SUCCESS';
 export const LOGIN_ERROR='LOGIN_ERROR';
 //LOGOUT action
 export const LOGOUT='LOGOUT';
-//PRODUCT actions
-export const GET_ITEMS='GET_ITEMS';
-export const GET_ITEMS_ERROR='GET_ITEMS_ERROR';
 //BASKET actions
 export const ADD_ITEM='ADD_ITEM';
 export const DELETE_ITEM='DELETE_ITEM';

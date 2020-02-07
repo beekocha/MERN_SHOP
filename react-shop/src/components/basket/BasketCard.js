@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deleteItem } from '../../redux/actions/basket';
 import PropTypes from 'prop-types';
 
-const BasketCard = ({deleteItem, pic, desc, name, cost, id}) => {
+const BasketCard = ({deleteItem, pic, name, cost, id}) => {
 
   return(
     <Fragment>

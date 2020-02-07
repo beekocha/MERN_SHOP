@@ -27,7 +27,7 @@ const Footer = () => {
                 </Col>
             </Row>
             <Row style={{marginTop:'2em', marginBottom: '2em'}}>
-                <Col sm={6, {order: 12}} lg={6} xs={6, {order: 12}} style={{alignSelf: 'center'}}>
+                <Col sm={{size:6,order: 12}} lg={6} xs={{size:6,order: 12}} style={{alignSelf: 'center'}}>
                     <h4>Bshop | Warm board-jackets</h4>
                     <p>
                         Clothes for snowboarding should provide warmth and at the same time be light and free,
@@ -37,7 +37,7 @@ const Footer = () => {
                     </p>
                     <Button variant='dark' as={Link} to='/jackets' >Try now</Button>
                 </Col>
-                <Col sm={6} lg={6, {order: 12}} md={6, {order: 12}}>
+                <Col sm={6} lg={{size:6,order: 12}} md={{size:6, order: 12}}>
                     <Image className='grid-image' src={s3}/>
                 </Col>
             </Row>

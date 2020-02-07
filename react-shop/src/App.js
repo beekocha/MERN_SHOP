@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Routes from './components/routing/Routes';
 import Navigation from './components/layout/Navigation';
@@ -13,11 +13,11 @@ import { loadUser } from './redux/actions/auth';
 if (localStorage.token) {
   setToken(localStorage.token);
 }
-
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+  
   return (
     <Provider store={store}>
       <Router>
@@ -25,7 +25,7 @@ function App() {
           <Navigation/>
           <Switch>
             <Route exact path='/' component={Landing}/>
-            <Route component={Routes}/>
+            <Route component={Routes} />
           </Switch>
         </Fragment>
       </Router>

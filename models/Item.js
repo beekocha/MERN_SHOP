@@ -23,15 +23,16 @@ const ItemSchema = new mongoose.Schema({
     comments: [
         {
           user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'users'
+            type: mongoose.Schema.Types.Mixed,
+            ref: 'user'
           },
           text: {
             type: String,
             required: true
           },
           name: {
-            type: String
+            type: String,
+            ref: 'user'
           },
           date: {
             type: Date,

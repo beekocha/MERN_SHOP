@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 const Basket = ({basket, buyAll, deleteAll}) => {
     const [ifempty, setIfempty] = useState(`You haven't bought anything yet`)
     const countTotal = () => {
-       basket.reduce((accum, itemValue) => {return accum+itemValue.cost},0)
+      return basket.reduce((accum, itemValue) => {return accum+itemValue.cost},0)
     }
     const remove = () => {
             deleteAll();
@@ -30,7 +30,7 @@ const Basket = ({basket, buyAll, deleteAll}) => {
             <h1 style={{display:'block', textAlign:'center'}}>BASKET</h1>
             <Container>
                 <Row  style={{display:'flex', placeContent: 'center'}}>
-                    <h2>Total is: {countTotal()} </h2>
+                    <h2>Total is: {countTotal()}$</h2>
                 </Row> 
                 <Row  style={{display:'flex', placeContent: 'center'}}>   
                     <Button variant='danger' onClick={remove}>Delete</Button>

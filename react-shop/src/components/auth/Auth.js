@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,8 +6,9 @@ import Nav from "react-bootstrap/Nav";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {login} from '../../redux/actions/auth';
+import Alerts from '../layout/Alerts';
  
-const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
+const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated, alerts}) => {
   // Changing data in login-form
   const [formData, setFormData] = useState({
     email: '',
@@ -24,18 +24,15 @@ const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
     e.preventDefault();
     login(email, password);
     if(isAuthenticated){
-      setShowLog(false)
+      setShowLog(false);
     }
   }
 
   const showAndHide = () => {
-
      setShowLog(false);
      setShowReg(true)
   
   }
- 
-
   //Rendering Login-modal
   return (
     <Fragment>
@@ -53,8 +50,10 @@ const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
           <Modal.Title style={{margin:'5px 0 5px 0', textAlign:'center'}}>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body >
+        {
+          alerts.id ? <Alerts/> : null
+        }
           <Form onSubmit={e => onSubmit(e)}>
-
             {/* Email */}
             <Form.Group controlId="formBasicEmailReg">
               <Form.Label>Email</Form.Label>
@@ -68,7 +67,6 @@ const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
                     placeholder="Enter email" 
               />
             </Form.Group>
-
               {/* Password */}
             <Form.Group controlId="formBasicPasswordReg">
               <Form.Label>Password</Form.Label>
@@ -82,7 +80,6 @@ const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated}) => {
                     required
               />
               </Form.Group>
-
               {/* Submit and Redirect */}
               <Button style={{marginTop:'2rem'}}
                     variant="success"
@@ -103,7 +100,8 @@ Auth.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  alerts: state.alerts
 });
 
 

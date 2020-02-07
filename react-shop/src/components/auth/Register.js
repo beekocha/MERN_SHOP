@@ -7,11 +7,10 @@ import Nav from "react-bootstrap/Nav";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {register} from '../../redux/actions/auth';
-import {setAlert} from '../../redux/actions/alerts';
-import Alert from "react-bootstrap/Alert";
+import Alerts from '../layout/Alerts';
  
 
-const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, setAlert}) => {
+const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, alerts}) => {
   // Register data
   const [formData, setFormData] = useState({
     name: '',
@@ -29,14 +28,12 @@ const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, s
     register({ name, email, password });
     if(isAuthenticated) {
       setShowReg(false)
-    }
+     }
     }
 
     const showAndHide = () => {
-   
        setShowReg(false);
        setShowLog(true)
-      
     }
 
   return (
@@ -55,6 +52,9 @@ const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, s
           <Modal.Title style={{margin:'5px 0 5px 0'}}>Register</Modal.Title>
         </Modal.Header>
         <Modal.Body >
+          {
+            alerts.id ? <Alerts/> : null
+          }
           <Form onSubmit={e => onSubmit(e)}>
             {/* Name */}
             <Form.Group controlId="formBasicNameReg">
@@ -114,14 +114,14 @@ const Register = ({setShowReg, showReg, setShowLog, register, isAuthenticated, s
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  alerts: state.alerts
 });
 
 export default connect(
   mapStateToProps,
-  { register, setAlert }
+  { register }
 )(Register);
