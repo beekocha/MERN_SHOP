@@ -38,10 +38,10 @@ const Navigation = ({ auth: { isAuthenticated}, logout, basket}) => {
                 <Nav>
                     <Nav.Link as={Link} to='/basket'>
                       
-                    <OverlayTrigger
+                    <OverlayTrigger 
                       placement="bottom"
                       flip
-                      delay={{ show: 250, hide: 3000 }}
+                      delay={{ show: 250, hide: 400 }}
                       trigger="hover"
                       overlay={popover}
                     >

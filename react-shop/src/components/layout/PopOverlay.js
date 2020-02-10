@@ -7,7 +7,7 @@ import Image from 'react-bootstrap/Image';
 
 const PopOverlay = ({basket}) => {
     return (
-            <Popover.Content style={{ overflow: 'auto', maxHeight:'300px'}}>
+            <Popover.Content style={{ overflow: 'auto', maxHeight:'250px'}}>
                 { basket.length>0 ? basket.map(item => 
                     <Row key={item.id} style={{maxWidth:'100%', padding:'2px', margin:'2px'}}>
                         <Image src={item.pic} alt='Your purchase' style={{maxWidth:'20%'}}/>

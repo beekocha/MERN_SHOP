@@ -58,9 +58,22 @@
 }
 
 
-@media (prefers-reduced-motion: no-preference) {
+@media (max-width: 700px) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+  #popover-basic {
+    display: none;
+  }
+  .carousel-caption {
+    color: rgb(5, 5, 5);
+    text-align: center;
+    position: static;
+    background-image: url(https://images6.alphacoders.com/405/thumb-1920-405481.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
   }
 }
 
