@@ -89,6 +89,7 @@ const Auth = ({setShowReg, setShowLog, showLog, login, isAuthenticated, alerts})
               </Button>
               <Button onClick = {() => showAndHide()} block variant="primary">Register</Button>
           </Form>
+          <footer>To try out my apllication: admin@gmail.com | 12345</footer>
         </Modal.Body>
       </Modal>
     </Fragment>

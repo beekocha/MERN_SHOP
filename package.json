@@ -7,7 +7,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "react-shop": "npm start --prefix react-shop",
-    "dev": "concurrently \"npm run server\" \"npm run react-shop\""
+    "dev": "concurrently \"npm run server\" \"npm run react-shop\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-shop && npm run build --prefix react-shop"
   },
   "repository": {
     "type": "git",
