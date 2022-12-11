@@ -22,7 +22,7 @@
   "homepage": "https://github.com/beekocha/MERN_SHOP#readme",
   "dependencies": {
     "config": "^3.2.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.7"
   },
